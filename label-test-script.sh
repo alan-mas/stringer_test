@@ -30,7 +30,7 @@ STOP_SHA=$2
 # --format: Using explicitly, so we don't rely on the default git log format. https://git-scm.com/docs/git-log#_pretty_formats.
 # https://git-scm.com/docs/git-log
 
-REF_LIST=$(git log --merges --reverse --oneline --format="format:%h %s" --ancestry-path "${START_SHA}..${STOP_SHA}" | grep "Merge pull request" | cut -c-10)
+REF_LIST=$(git log --merges --reverse --oneline --format="format:%h %s" --ancestry-path "${START_SHA}..${STOP_SHA}" | grep "Merge pull request" | cut -d ' ' -f1)
 
 
 # Curl function to DRY within creating label
